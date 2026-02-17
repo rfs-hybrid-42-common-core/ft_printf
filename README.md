@@ -60,11 +60,11 @@ This implementation handles the following advanced formatting flags and their co
 To efficiently manage the bonus flags (`-`, `0`, `.`, `#`, `+`, `space`, and width) without passing a dozen variables between functions, I utilized a centralized `t_flags` structure. 
 Whenever a `%` is encountered, the parser initializes this struct, reads the intermediate characters, and activates the corresponding boolean values and integer widths before passing the struct to the final conversion dispatch.
 
-### Algorithm: Parsing & Dispatch
-1. **Linear Parsing:** The algorithm iterates linearly through the format string using a `while` loop. 
-2. **State Management:** Regular characters are immediately printed to standard output. When a `%` character is found, the parser enters a "flag reading" state.
-3. **Variadic Extraction:** Using `<stdarg.h>` macros (`va_start`, `va_arg`, `va_end`), the corresponding arguments are dynamically extracted based on the final conversion specifier.
-4. **Modular Dispatch:** A jump table (or switch-case equivalent) dispatches the argument and the populated `t_flags` struct to specific formatting functions (e.g., `ft_puthex_cnt`, `ft_putnbr_cnt`). This modular approach ensures the code remains highly extensible and strictly adheres to the 42 Norm (under 25 lines per function).
+### Algorithm: Unified Base Conversion & Dispatch
+1. **Linear Parsing:** The algorithm iterates linearly through the format string using a `while` loop. When a `%` character is found, the parser enters a "flag reading" state.
+2. **Variadic Extraction:** Using `<stdarg.h>` macros (`va_start`, `va_arg`, `va_end`), the corresponding arguments are dynamically extracted based on the final conversion specifier.
+3. **Modular Dispatch:** A dispatcher routes the argument and the populated `t_flags` struct to specific formatting functions (e.g., `ft_puthex_cnt`, `ft_putnbr_cnt`).
+4. **Universal String Conversion (`ft_utoa_base`):** Instead of duplicating logic for integer, hexadecimal, and pointer conversions, the architecture converts signed numbers to positive `unsigned long` values. These are all routed through a single, custom utility function (`ft_utoa_base`) that handles dynamic base conversion, drastically reducing code duplication and adhering strictly to the 42 Norm. Memory is dynamically allocated, printed with proper padding, and immediately freed.
 
 ---
 
