@@ -64,20 +64,20 @@ Whenever a `%` is encountered, the parser initializes this struct, reads the int
 1. **Linear Parsing:** The algorithm iterates linearly through the format string using a `while` loop. 
 2. **State Management:** Regular characters are immediately printed to standard output. When a `%` character is found, the parser enters a "flag reading" state.
 3. **Variadic Extraction:** Using `<stdarg.h>` macros (`va_start`, `va_arg`, `va_end`), the corresponding arguments are dynamically extracted based on the final conversion specifier.
-4. **Modular Dispatch:** A jump table (or switch-case equivalent) dispatches the argument and the populated `t_flags` struct to specific formatting functions (e.g., `print_hex`, `print_number`). This modular approach ensures the code remains highly extensible and strictly adheres to the 42 Norm (under 25 lines per function).
+4. **Modular Dispatch:** A jump table (or switch-case equivalent) dispatches the argument and the populated `t_flags` struct to specific formatting functions (e.g., `ft_puthex_cnt`, `ft_putnbr_cnt`). This modular approach ensures the code remains highly extensible and strictly adheres to the 42 Norm (under 25 lines per function).
 
 ---
 
 ## 🛠️ Instructions
 
 ### 📦 Installation
-To compile the library, run the following command in the root of the repository:
+This implementation natively includes all bonus flags in the standard build. To compile the complete library, run the following command in the root of the repository:
 
 ```bash
 make
 ```
 
-To compile the library **including the bonus formatting flags**:
+The `make bonus` rule is also included to satisfy 42's evaluation scripts and performs the same complete build:
 
 ```bash
 make bonus
