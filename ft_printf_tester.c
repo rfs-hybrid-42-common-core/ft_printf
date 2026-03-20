@@ -6,7 +6,7 @@
 /*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 04:34:15 by maaugust          #+#    #+#             */
-/*   Updated: 2026/03/20 04:34:21 by maaugust         ###   ########.fr       */
+/*   Updated: 2026/03/20 05:34:59 by maaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@
 	do { \
 		int r1, r2; \
 		printf("--- %s ---\n", test_name); \
-		printf("libc : ["); r1 = printf(fmt, ##__VA_ARGS__); \
+		printf("libc : ["); fflush(stdout); r1 = printf(fmt, ##__VA_ARGS__); \
 		printf("] (ret: %d)\n", r1); \
-		printf("ft   : ["); r2 = ft_printf(fmt, ##__VA_ARGS__); \
+		printf("ft   : ["); fflush(stdout); r2 = ft_printf(fmt, ##__VA_ARGS__); \
 		printf("] (ret: %d)\n\n", r2); \
 	} while (0)
 
@@ -50,7 +50,8 @@ int	main(void)
 	RUN_TEST("Characters (%c)", "Char: %c, %c", 'A', 'z');
 	
 	RUN_TEST("Strings (%s) - Normal", "String: %s", "42 Porto");
-	RUN_TEST("Strings (%s) - NULL", "String: %s", (char *)NULL);
+	char *null_str = NULL;
+	RUN_TEST("Strings (%s) - NULL", "String: %s", null_str);
 	RUN_TEST("Strings (%s) - Empty", "String: %s", "");
 
 	RUN_TEST("Pointers (%p) - Normal", "Pointer: %p", "Hello");
