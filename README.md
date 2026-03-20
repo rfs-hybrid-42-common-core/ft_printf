@@ -1,7 +1,7 @@
 *This project has been created as part of the 42 curriculum by maaugust.*
 
 <div align="center">
-  <img src="assets/cover-ft_printf-bonus.png" alt="ft_printf Cover" width="100%" />
+  <img src="https://raw.githubusercontent.com/rfs-hybrid/42-Common-Core/main/assets/covers/cover-ft_printf-bonus.png" alt="ft_printf Cover" width="100%" />
 </div>
 
 <div align="center">
@@ -112,9 +112,10 @@ cc main.c -L. -lftprintf -o my_program
 ---
 
 ## 📚 Resources & References
+* `man 3 printf`
 * [Secrets of printf](https://www.cypress.com/file/54441/download)
 * [C Variadic Functions (va_list)](https://en.cppreference.com/w/c/variadic)
-* `man 3 printf`
+
 
 ### 🤖 AI Usage Guidelines
 *Per the subject requirements:*
