@@ -128,7 +128,7 @@ The 42 subject highly encourages creating test programs to verify your work befo
 **1. Using a Custom Tester**
 If you are using a custom `ft_printf_tester.c` file, compile it alongside your library. (Using preprocessor macros like `-D` allows you to target specific tests if your tester is configured for it).
 ```bash
-cc -Wall -Wextra -Werror -I./includes -D TEST_MANDATORY -D TEST_BONUS ft_printf_tester.c libftprintf.a -o tester
+cc -Wall -Wextra -Werror -I./includes -I./libft/includes -D TEST_MANDATORY -D TEST_BONUS ft_printf_tester.c libftprintf.a -o tester
 ./tester
 ```
 > **⚠️ WARNING for 42 Students:** Do not push `ft_printf_tester.c` or any executable files to your final Moulinette repository! They are strictly for local testing purposes. Submitting unauthorized files will result in a 0.
