@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-  <h1>🖨️ ft_printf: Because ft_putnbr() and ft_putstr() aren’t enough</h1>
+  <h1>🖨️ ft_printf: Because ft_putnbr() and ft_putstr() aren't enough</h1>
   <img src="https://img.shields.io/badge/Language-C-blue" />
   <img src="https://img.shields.io/badge/Grade-125%2F100-success" />
   <img src="https://img.shields.io/badge/Norminette-Passing-success" />
@@ -16,7 +16,7 @@
 ## 💡 Description
 **ft_printf** is a project in the 42 curriculum that requires recoding the standard C library `printf` function. 
 
-The primary goal of this project is to learn how to use **variadic arguments** in C (functions that accept an indefinite number of arguments) while building a robust, extensible formatting engine. This custom `ft_printf` is fully integrated with my `libft` and handles complex formatting flags for a maximum bonus grade.
+The primary goal of this project is to learn how to use **variadic arguments** in C (functions that accept an indefinite number of arguments) while building a robust, extensible formatting engine. The key to a successful `ft_printf` is well-structured and extensible code, which lays the groundwork for handling complex string formatting without relying on the original function's buffer management. This custom `ft_printf` is fully integrated with my `libft` and handles complex formatting flags for a maximum bonus grade.
 
 ---
 
@@ -59,6 +59,18 @@ This implementation handles the following advanced formatting flags and their co
 ### Data Structure: The Flag Struct
 To efficiently manage the bonus flags (`-`, `0`, `.`, `#`, `+`, `space`, and width) without passing a dozen variables between functions, I utilized a centralized `t_flags` structure. 
 Whenever a `%` is encountered, the parser initializes this struct, reads the intermediate characters, and activates the corresponding boolean values and integer widths before passing the struct to the final conversion dispatch.
+```c
+typedef struct s_flags
+{
+    bool    minus;
+    bool    plus;
+    bool    space;
+    bool    hash;
+    bool    zero;
+    int     width;
+    int     prec;
+}   t_flags;
+```
 
 ### Algorithm: Unified Base Conversion & Dispatch
 1. **Linear Parsing:** The algorithm iterates linearly through the format string using a `while` loop. When a `%` character is found, the parser enters a "flag reading" state.
@@ -91,7 +103,7 @@ This will generate the `libftprintf.a` archive file.
 * `make re`: Performs a clean re-build.
 
 ### 💻 Usage
-To use this function in your code, include the header and link the archive during compilation:
+To use this library in your code, include the header and link the archive during compilation:
 
 **1. Include header:**
 ```c
@@ -105,19 +117,66 @@ int main()
 ```
 
 **2. Compile:**
+Make sure to point the compiler to your headers directory.
 ```bash
-cc main.c -L. -lftprintf -o my_program
+cc main.c -I./includes -L. -lftprintf -o my_program
+```
+
+### 🧪 Testing
+The 42 subject highly encourages creating test programs to verify your work before peer evaluations. 
+
+**1. Using a Custom Tester**
+If you are using a custom `ft_printf_tester.c` file, compile it alongside your library. (Using preprocessor macros like `-D` allows you to target specific tests if your tester is configured for it).
+```bash
+cc -Wall -Wextra -Werror -I./includes -D TEST_MANDATORY -D TEST_BONUS ft_printf_tester.c libftprintf.a -o tester
+./tester
+```
+> **⚠️ WARNING for 42 Students:** Do not push `ft_printf_tester.c` or any executable files to your final Moulinette repository! They are strictly for local testing purposes. Submitting unauthorized files will result in a 0.
+
+**2. Third-Party Testers (Francinette)**
+Francinette is a widely used testing framework within the 42 community that runs strict tests (including memory leak checks and edge cases) against your library.
+
+* **Installation:** Follow the instructions on the [Francinette GitHub Repository](https://github.com/xicodomingues/francinette).
+* **Usage:** Inside your repository root, run:
+```bash
+paco
+```
+*(Note: To include bonus functions, use `paco -b`. To enforce strict norm and timeout rules, use `paco -s`)*
+
+### 🚨 The Norm
+Moulinette relies on a program called `norminette` to check if your files comply with the 42 Norm. Every single `.c` and `.h` file, including bonus files, must pass this check. If there is a norm error, you will receive a 0.
+
+**The 42 Header:**
+Before writing any code, every file must start with the standard 42 header. `norminette` will automatically fail any file missing this specific signature.
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/18 17:11:33 by maaugust          #+#    #+#             */
+/*   Updated: 2025/05/21 15:41:17 by maaugust         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+```
+
+Run the following command in the root of your repository before pushing to check all your files at once:
+```bash
+norminette -R CheckForbiddenSourceHeader
 ```
 
 ---
 
 ## 📚 Resources & References
 * `man 3 printf`
-* [Secrets of printf](https://www.cypress.com/file/54441/download)
-* [C Variadic Functions (va_list)](https://en.cppreference.com/w/c/variadic)
-
+* [C Variadic Functions (stdarg.h)](https://en.cppreference.com/w/c/variadic)
+* [Makefile Tutorial](https://makefiletutorial.com/)
+* [42 Norm V4](https://cdn.intra.42.fr/pdf/pdf/96987/en.norm.pdf) - The strict coding standard for 42 C projects.
+* [Official 42 Norminette Repository](https://github.com/42School/norminette) - The open-source linter enforcing the strict 42 coding standard.
 
 ### 🤖 AI Usage Guidelines
 *Per the subject requirements:*
 * **Tasks:** AI tools were used exclusively for generating portfolio-ready documentation templates and brainstorming structural layouts for the `t_flags` parsing algorithm.
-* **Code:** No AI-generated code was directly copied into the project source files. The variadic logic, string manipulation, and base conversions were entirely manually coded to ensure complete mastery of the underlying C mechanics.
+* **Code:** No AI-generated code was used to bypass the learning process. All variadic parsing, memory management, base conversions, and flag routing were manually coded to ensure a fundamental understanding of C and pointer manipulation.
