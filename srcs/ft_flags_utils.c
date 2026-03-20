@@ -6,7 +6,7 @@
 /*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 14:39:10 by maaugust          #+#    #+#             */
-/*   Updated: 2026/02/16 23:44:51 by maaugust         ###   ########.fr       */
+/*   Updated: 2026/03/20 03:37:47 by maaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * @fn void reset_flags(t_flags *flags)
  * @brief Resets all fields in the flags structure to their default values.
- * @details Sets all boolean formatting flags to false, width to 0, and
+ * @details Sets all boolean formatting flags to false, width to 0, and 
  * precision to -1 (indicating no precision specified).
  * @param flags Pointer to the t_flags structure to reset.
  */
@@ -33,9 +33,9 @@ void	reset_flags(t_flags *flags)
 /**
  * @fn void update_flags(const char *s, t_flags *flags)
  * @brief Parses formatting characters and updates the flags structure.
- * @details Iterates through the current position of the format string to
+ * @details Iterates through the current position of the format string to 
  * identify and set flags ('-', '+', ' ', '#', '0'), width, and precision.
- * @param s Pointer to the current character in the format string.
+ * @param s     Pointer to the current character in the format string.
  * @param flags Pointer to the t_flags structure to update.
  */
 void	update_flags(const char *s, t_flags *flags)
@@ -70,10 +70,10 @@ void	update_flags(const char *s, t_flags *flags)
 /**
  * @fn bool is_specifier(char c)
  * @brief Checks if a character is a valid format specifier.
- * @details Compares the character against the standard printf specifiers
+ * @details Compares the character against the standard printf specifiers 
  * supported by the project (c, s, p, d, i, u, x, X, %).
  * @param c The character to check.
- * @return true if the character is a specifier, false otherwise.
+ * @return  true if the character is a specifier, false otherwise.
  */
 bool	is_specifier(char c)
 {

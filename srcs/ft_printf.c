@@ -6,7 +6,7 @@
 /*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:11:33 by maaugust          #+#    #+#             */
-/*   Updated: 2026/02/16 23:45:51 by maaugust         ###   ########.fr       */
+/*   Updated: 2026/03/20 03:38:19 by maaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 /**
  * @fn static int ft_check_arg(char c, va_list args, t_flags *flags)
  * @brief Routes the variadic argument to the appropriate printing function.
- * @details Checks the format specifier character and calls the corresponding
+ * @details Checks the format specifier character and calls the corresponding 
  * print function, passing along the argument and active format flags.
- * @param c The format specifier character.
- * @param args The variadic argument list.
+ * @param c     The format specifier character.
+ * @param args  The variadic argument list.
  * @param flags Pointer to the current flags structure.
- * @return The number of characters printed, or -1 on error.
+ * @return      The number of characters printed, or -1 on error.
  */
 static int	ft_check_arg(char c, va_list args, t_flags *flags)
 {
@@ -42,15 +42,15 @@ static int	ft_check_arg(char c, va_list args, t_flags *flags)
 }
 
 /**
- * @fn static void ft_parse_str(const char *s, va_list args, t_flags *flags,
+ * @fn static void ft_parse_str(const char *s, va_list args, t_flags *flags, 
  * int *cnt)
  * @brief Iterates through the format string, processing text and format tags.
- * @details Advances through the string. If a '%' is found, it parses flags
+ * @details Advances through the string. If a '%' is found, it parses flags 
  * and specifiers; otherwise, it prints the standard characters directly.
- * @param s The format string to parse.
- * @param args The variadic argument list.
+ * @param s     The format string to parse.
+ * @param args  The variadic argument list.
  * @param flags Pointer to the flags structure.
- * @param cnt Pointer to the total printed character count.
+ * @param cnt   Pointer to the total printed character count.
  */
 static void	ft_parse_str(const char *s, va_list args, t_flags *flags, int *cnt)
 {
@@ -84,11 +84,11 @@ static void	ft_parse_str(const char *s, va_list args, t_flags *flags, int *cnt)
 /**
  * @fn int ft_printf(const char *s, ...)
  * @brief Produces output according to a format string.
- * @details Mimics the behavior of the standard C library printf function,
+ * @details Mimics the behavior of the standard C library printf function, 
  * supporting various specifiers and formatting flags.
- * @param s The format string containing text and format specifiers.
+ * @param s   The format string containing text and format specifiers.
  * @param ... Variadic arguments to be formatted and printed.
- * @return The total number of characters printed, or -1 on error.
+ * @return    The total number of characters printed, or -1 on error.
  */
 int	ft_printf(const char *s, ...)
 {

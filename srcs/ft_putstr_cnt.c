@@ -6,7 +6,7 @@
 /*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 18:10:11 by maaugust          #+#    #+#             */
-/*   Updated: 2026/02/16 23:48:26 by maaugust         ###   ########.fr       */
+/*   Updated: 2026/03/20 03:39:57 by maaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * @fn static void ft_parse_null(t_flags *flags, int *total)
  * @brief Handles the specific edge case of printing a NULL string pointer.
- * @details Prints "(null)" taking into account precision limits. If precision
+ * @details Prints "(null)" taking into account precision limits. If precision 
  * is less than 6, it may truncate the output.
  * @param flags Pointer to the formatting flags.
  * @param total Pointer to the tracking character count.
@@ -49,11 +49,11 @@ static void	ft_parse_null(t_flags *flags, int *total)
 /**
  * @fn static void ft_parse_string(const char *s, t_flags *flags, int *cnt)
  * @brief Applies precision, width, and alignment rules to a valid string.
- * @details Creates a substring bounded by precision, then prints it with
+ * @details Creates a substring bounded by precision, then prints it with 
  * the requested width and justification padding.
- * @param s The string to format and print.
+ * @param s     The string to format and print.
  * @param flags Pointer to the formatting flags.
- * @param cnt Pointer to the tracking character count.
+ * @param cnt   Pointer to the tracking character count.
  */
 static void	ft_parse_string(const char *s, t_flags *flags, int *cnt)
 {
@@ -86,11 +86,11 @@ static void	ft_parse_string(const char *s, t_flags *flags, int *cnt)
 /**
  * @fn int ft_putstr_cnt(char *s, t_flags *flags)
  * @brief Prints a string, applying all relevant formatting flags.
- * @details Routes execution based on whether the input string pointer is valid
+ * @details Routes execution based on whether the input string pointer is valid 
  * or NULL, ensuring edge cases are handled cleanly.
- * @param s The string to print.
+ * @param s     The string to print.
  * @param flags Pointer to the format flags structure.
- * @return The total number of characters printed.
+ * @return      The total number of characters printed.
  */
 int	ft_putstr_cnt(char *s, t_flags *flags)
 {

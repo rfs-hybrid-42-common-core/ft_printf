@@ -6,7 +6,7 @@
 /*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:02:14 by maaugust          #+#    #+#             */
-/*   Updated: 2026/02/16 23:49:29 by maaugust         ###   ########.fr       */
+/*   Updated: 2026/03/20 03:41:41 by maaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 /**
  * @fn static int ft_numlen(unsigned long nbr, size_t base_len)
  * @brief Calculates the length needed to represent a number in a given base.
- * @details Iteratively divides the number by the base length to determine
+ * @details Iteratively divides the number by the base length to determine 
  * how many characters will be required for the final string representation.
- * @param nbr The number to evaluate.
+ * @param nbr      The number to evaluate.
  * @param base_len The length of the target numeral base.
- * @return The number of characters needed to represent the number.
+ * @return         The number of characters needed to represent the number.
  */
 static int	ft_numlen(unsigned long nbr, size_t base_len)
 {
@@ -36,15 +36,15 @@ static int	ft_numlen(unsigned long nbr, size_t base_len)
 
 /**
  * @fn char *ft_utoa_base(unsigned long nbr, char *base, size_t base_len)
- * @brief Converts an unsigned long integer to an allocated string
+ * @brief Converts an unsigned long integer to an allocated string 
  * representation.
- * @details Allocates memory for a string and populates it backwards using the
+ * @details Allocates memory for a string and populates it backwards using the 
  * provided character set to represent the number in the specified base.
- * @param nbr The unsigned integer to convert.
- * @param base A string containing the characters of the numeral base.
+ * @param nbr      The unsigned integer to convert.
+ * @param base     A string containing the characters of the numeral base.
  * @param base_len The length of the numeral base string.
- * @return A dynamically allocated string representing the number, or NULL if
- * allocation fails.
+ * @return         A dynamically allocated string representing the number, or 
+ * NULL if allocation fails.
  */
 char	*ft_utoa_base(unsigned long nbr, char *base, size_t base_len)
 {

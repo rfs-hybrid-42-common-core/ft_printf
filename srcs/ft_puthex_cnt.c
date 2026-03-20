@@ -6,7 +6,7 @@
 /*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:51:14 by maaugust          #+#    #+#             */
-/*   Updated: 2026/02/16 23:46:51 by maaugust         ###   ########.fr       */
+/*   Updated: 2026/03/20 03:39:07 by maaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 /**
  * @fn static void ft_print_hash(t_flags flags, char c)
  * @brief Prints the alternate form hash prefix.
- * @details Outputs "0x" or "0X" depending on the specifier character if the
+ * @details Outputs "0x" or "0X" depending on the specifier character if the 
  * hash flag is active.
  * @param flags The formatting flags containing the hash boolean.
- * @param c The specifier character ('x' or 'X') to determine case.
+ * @param c     The specifier character ('x' or 'X') to determine case.
  */
 static void	ft_print_hash(t_flags flags, char c)
 {
@@ -34,12 +34,12 @@ static void	ft_print_hash(t_flags flags, char c)
 /**
  * @fn static void ft_parse_string(char *s, t_flags flags, int *cnt, char c)
  * @brief Applies width and alignment flags to a hexadecimal string.
- * @details Handles left and right justification, padding with spaces up to
+ * @details Handles left and right justification, padding with spaces up to 
  * the specified minimum width.
- * @param s The hexadecimal string to print.
+ * @param s     The hexadecimal string to print.
  * @param flags The formatting flags structure.
- * @param cnt Pointer to the character count.
- * @param c The specifier character ('x' or 'X').
+ * @param cnt   Pointer to the character count.
+ * @param c     The specifier character ('x' or 'X').
  */
 static void	ft_parse_string(char *s, t_flags flags, int *cnt, char c)
 {
@@ -62,12 +62,12 @@ static void	ft_parse_string(char *s, t_flags flags, int *cnt, char c)
 /**
  * @fn static void ft_parse_prec(char *s, t_flags *flags, int *cnt, char c)
  * @brief Applies precision requirements to a hexadecimal string.
- * @details Pads the hexadecimal output with leading zeros to meet precision,
+ * @details Pads the hexadecimal output with leading zeros to meet precision, 
  * while still respecting width and left/right justification rules.
- * @param s The hexadecimal string to print.
+ * @param s     The hexadecimal string to print.
  * @param flags Pointer to the format flags structure.
- * @param cnt Pointer to the character count.
- * @param c The specifier character ('x' or 'X').
+ * @param cnt   Pointer to the character count.
+ * @param c     The specifier character ('x' or 'X').
  */
 static void	ft_parse_prec(char *s, t_flags *flags, int *cnt, char c)
 {
@@ -98,12 +98,12 @@ static void	ft_parse_prec(char *s, t_flags *flags, int *cnt, char c)
 /**
  * @fn static void ft_parse_hex(char *s, t_flags *flags, int *cnt, char c)
  * @brief Routes the hexadecimal string to the appropriate formatting function.
- * @details Evaluates the priority of precision, zero-padding, and width flags
+ * @details Evaluates the priority of precision, zero-padding, and width flags 
  * to determine the correct printing sequence.
- * @param s The hexadecimal string to print.
+ * @param s     The hexadecimal string to print.
  * @param flags Pointer to the format flags structure.
- * @param cnt Pointer to the character count.
- * @param c The specifier character ('x' or 'X').
+ * @param cnt   Pointer to the character count.
+ * @param c     The specifier character ('x' or 'X').
  */
 static void	ft_parse_hex(char *s, t_flags *flags, int *cnt, char c)
 {
@@ -136,12 +136,12 @@ static void	ft_parse_hex(char *s, t_flags *flags, int *cnt, char c)
 /**
  * @fn int ft_puthex_cnt(long nbr, t_flags *flags, char c)
  * @brief Converts a long number to hexadecimal and prints it with formatting.
- * @details Generates the base-16 string and calculates the necessary layout
+ * @details Generates the base-16 string and calculates the necessary layout 
  * lengths before passing it down for flagged formatting.
- * @param nbr The number to convert and print.
+ * @param nbr   The number to convert and print.
  * @param flags Pointer to the format flags structure.
- * @param c The format specifier ('x' or 'X').
- * @return The total number of characters printed, or -1 on error.
+ * @param c     The format specifier ('x' or 'X').
+ * @return      The total number of characters printed, or -1 on error.
  */
 int	ft_puthex_cnt(long nbr, t_flags *flags, char c)
 {
@@ -167,5 +167,6 @@ int	ft_puthex_cnt(long nbr, t_flags *flags, char c)
 	}
 	ft_parse_hex(str, flags, &cnt, c);
 	reset_flags(flags);
-	return (free(str), cnt);
+	free(str);
+	return (cnt);
 }

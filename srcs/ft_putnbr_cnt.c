@@ -6,7 +6,7 @@
 /*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 15:10:41 by maaugust          #+#    #+#             */
-/*   Updated: 2026/02/16 23:47:39 by maaugust         ###   ########.fr       */
+/*   Updated: 2026/03/20 03:39:36 by maaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 /**
  * @fn static void ft_print_sign(t_flags flags, bool neg)
  * @brief Prints the appropriate sign or space prefix for a numeric value.
- * @details Assesses whether a minus sign, plus sign, or space should be
+ * @details Assesses whether a minus sign, plus sign, or space should be 
  * printed based on the number's negativity and active flags.
  * @param flags Formatting flags to check for '+' or space priority.
- * @param neg Boolean indicating if the number is negative.
+ * @param neg   Boolean indicating if the number is negative.
  */
 static void	ft_print_sign(t_flags flags, bool neg)
 {
@@ -33,12 +33,12 @@ static void	ft_print_sign(t_flags flags, bool neg)
 /**
  * @fn static void ft_parse_prec(char *s, t_flags *flags, int *cnt, bool neg)
  * @brief Handles width and precision formatting for numeric strings.
- * @details Pads the string with zeros to meet precision limits while ensuring
+ * @details Pads the string with zeros to meet precision limits while ensuring 
  * overall width and alignment constraints are respected.
- * @param s The numeric string to format.
+ * @param s     The numeric string to format.
  * @param flags Pointer to the formatting flags structure.
- * @param cnt Pointer to the tracking character count.
- * @param neg Boolean indicating if the number is negative.
+ * @param cnt   Pointer to the tracking character count.
+ * @param neg   Boolean indicating if the number is negative.
  */
 static void	ft_parse_prec(char *s, t_flags *flags, int *cnt, bool neg)
 {
@@ -69,12 +69,12 @@ static void	ft_parse_prec(char *s, t_flags *flags, int *cnt, bool neg)
 /**
  * @fn static void ft_parse_string(char *s, t_flags flags, int *cnt, bool neg)
  * @brief Handles width and alignment formatting for basic numeric strings.
- * @details Justifies the numeric string to the left or right, filling the
+ * @details Justifies the numeric string to the left or right, filling the 
  * remaining width with spaces.
- * @param s The numeric string to format.
+ * @param s     The numeric string to format.
  * @param flags The formatting flags structure.
- * @param cnt Pointer to the tracking character count.
- * @param neg Boolean indicating if the number is negative.
+ * @param cnt   Pointer to the tracking character count.
+ * @param neg   Boolean indicating if the number is negative.
  */
 static void	ft_parse_string(char *s, t_flags flags, int *cnt, bool neg)
 {
@@ -97,12 +97,12 @@ static void	ft_parse_string(char *s, t_flags flags, int *cnt, bool neg)
 /**
  * @fn static void ft_parse_nbr(char *s, t_flags *flags, int *cnt, bool neg)
  * @brief Routes the numeric string to the correct parsing sub-function.
- * @details Decides whether precision, zero-padding, or standard width rules
+ * @details Decides whether precision, zero-padding, or standard width rules 
  * should be applied based on the flags structure.
- * @param s The numeric string to format.
+ * @param s     The numeric string to format.
  * @param flags Pointer to the formatting flags structure.
- * @param cnt Pointer to the tracking character count.
- * @param neg Boolean indicating if the number is negative.
+ * @param cnt   Pointer to the tracking character count.
+ * @param neg   Boolean indicating if the number is negative.
  */
 static void	ft_parse_nbr(char *s, t_flags *flags, int *cnt, bool neg)
 {
@@ -135,11 +135,11 @@ static void	ft_parse_nbr(char *s, t_flags *flags, int *cnt, bool neg)
 /**
  * @fn int ft_putnbr_cnt(int n, t_flags *flags)
  * @brief Converts and prints a signed integer, applying all format flags.
- * @details Retrieves the absolute value string via ft_utoa_base and calculates
+ * @details Retrieves the absolute value string via ft_utoa_base and calculates 
  * the padding lengths required for the sign and precision.
- * @param n The integer to print.
+ * @param n     The integer to print.
  * @param flags Pointer to the format flags structure.
- * @return The total number of characters printed, or -1 on error.
+ * @return      The total number of characters printed, or -1 on error.
  */
 int	ft_putnbr_cnt(int n, t_flags *flags)
 {
@@ -164,5 +164,6 @@ int	ft_putnbr_cnt(int n, t_flags *flags)
 	}
 	ft_parse_nbr(str, flags, &cnt, (n < 0));
 	reset_flags(flags);
-	return (free(str), cnt);
+	free(str);
+	return (cnt);
 }
