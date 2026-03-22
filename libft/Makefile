@@ -6,34 +6,34 @@
 #    By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/03 18:21:29 by maaugust          #+#    #+#              #
-#    Updated: 2026/03/20 03:22:41 by maaugust         ###   ########.fr        #
+#    Updated: 2026/03/22 05:25:34 by maaugust         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ============================ PROJECT FILE NAMES ============================ #
-NAME             = libft.a
+NAME           = libft.a
 
 # ============================== COMPILER FLAGS ============================== #
-CC               = cc
-CFLAGS           = -Wall -Wextra -Werror
-INCLUDES         = -Iincludes
-AR               = ar rcs
-RM               = rm -rf
+CC             = cc
+CFLAGS         = -Wall -Wextra -Werror
+INCLUDES       = -Iincludes
+AR             = ar rcs
+RM             = rm -rf
 
 # ================================== COLORS ================================== #
-GREEN            := \033[32m
-RED              := \033[31m
-YELLOW           := \033[33m
-CYAN             := \033[36m
-RESET            := \033[0m
-BOLD             := \033[1m
+GREEN          := \033[32m
+RED            := \033[31m
+YELLOW         := \033[33m
+CYAN           := \033[36m
+RESET          := \033[0m
+BOLD           := \033[1m
 
 # =============================== SOURCE FILES =============================== #
-SRC_PATH    = srcs
-SRC         = $(shell find $(SRC_PATH) -name '*.c')
+SRC_PATH       = srcs
+SRC            = $(shell find $(SRC_PATH) -name '*.c')
 
-OBJ_PATH    = objs
-OBJ         = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))
+OBJ_PATH       = objs
+OBJ            = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))
 
 # ============================ COMPILATION RULES ============================= #
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c

@@ -6,7 +6,7 @@
 /*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 13:01:09 by maaugust          #+#    #+#             */
-/*   Updated: 2026/03/20 03:24:14 by maaugust         ###   ########.fr       */
+/*   Updated: 2026/03/22 05:31:00 by maaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,32 @@
 /* MACROS                                                                     */
 /* ========================================================================== */
 
+/**
+ * @def HEX_LOWER
+ * @brief The lowercase hexadecimal character set.
+ */
 # define HEX_LOWER	"0123456789abcdef"
+
+/**
+ * @def HEX_UPPER
+ * @brief The uppercase hexadecimal character set.
+ */
 # define HEX_UPPER	"0123456789ABCDEF"
+
+/**
+ * @def HEX_LEN
+ * @brief The base length for hexadecimal numbers (16).
+ */
 # define HEX_LEN	16
+
+/**
+ * @def DEC_LEN
+ * @brief The base length for decimal numbers (10).
+ */
 # define DEC_LEN	10
 
 /* ========================================================================== */
-/* STRUCTURES                                                                 */
+/* DATA STRUCTURES                                                            */
 /* ========================================================================== */
 
 /**

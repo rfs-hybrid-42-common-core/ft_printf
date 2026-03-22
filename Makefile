@@ -6,7 +6,7 @@
 #    By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 21:11:29 by maaugust          #+#    #+#              #
-#    Updated: 2026/03/20 03:49:21 by maaugust         ###   ########.fr        #
+#    Updated: 2026/03/22 05:27:03 by maaugust         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,6 @@ INCLUDES       = -Iincludes -Ilibft/includes
 AR             = ar rcs
 RM             = rm -rf
 
-# ================================== LIBFT =================================== #
-LIBFT_PATH     = ./libft
-LIBFT_LIB      = $(LIBFT_PATH)/libft.a
-
 # ================================== COLORS ================================== #
 GREEN          := \033[32m
 RED            := \033[31m
@@ -32,12 +28,16 @@ CYAN           := \033[36m
 RESET          := \033[0m
 BOLD           := \033[1m
 
-# =============================== SOURCE FILES =============================== #
-SRC_PATH  = ./srcs
-SRC       = $(shell find $(SRC_PATH) -name '*.c')
+# ================================== LIBFT =================================== #
+LIBFT_PATH     = ./libft
+LIBFT_LIB      = $(LIBFT_PATH)/libft.a
 
-OBJ_PATH  = ./objs
-OBJ       = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))
+# =============================== SOURCE FILES =============================== #
+SRC_PATH       = ./srcs
+SRC            = $(shell find $(SRC_PATH) -name '*.c')
+
+OBJ_PATH       = ./objs
+OBJ            = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))
 
 # ============================ COMPILATION RULES ============================= #
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
@@ -51,10 +51,10 @@ all: $(NAME)
 bonus: all
 
 $(NAME): $(LIBFT_LIB) $(OBJ)
-	@printf "$(GREEN)✔ Mandatory objects built successfully.$(RESET)\n"
+	@printf "$(GREEN)✔ ft_printf objects built successfully.$(RESET)\n"
 	@cp $(LIBFT_LIB) $(NAME)
 	@$(AR) $(NAME) $(OBJ)
-	@printf "$(GREEN)$(BOLD)✔ Build complete → $(NAME)$(RESET)\n"
+	@printf "$(GREEN)$(BOLD)✔ Library created → $(NAME)$(RESET)\n"
 
 $(LIBFT_LIB):
 	@printf "$(CYAN)→ Building Libft...$(RESET)\n"
