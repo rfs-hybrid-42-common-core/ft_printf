@@ -6,7 +6,7 @@
 /*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 13:01:09 by maaugust          #+#    #+#             */
-/*   Updated: 2026/03/22 05:31:00 by maaugust         ###   ########.fr       */
+/*   Updated: 2026/03/24 18:42:28 by maaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@
 /**
  * @struct s_flags
  * @brief Structure to hold format specifier flags, width, and precision.
+ * @details This structure is initialized and populated during the format 
+ * string parsing phase. It is passed by reference to the specific conversion 
+ * functions, keeping function signatures clean and centrally managing the 
+ * state of all active bonus flags, alignment limits, and padding requirements.
  * @var s_flags::minus The left-justify flag '-'.
  * @var s_flags::plus  The force sign flag '+'.
  * @var s_flags::space The space before positive numbers flag ' '.
