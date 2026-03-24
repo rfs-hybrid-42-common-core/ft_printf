@@ -6,7 +6,7 @@
 #    By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 21:11:29 by maaugust          #+#    #+#              #
-#    Updated: 2026/03/24 18:38:47 by maaugust         ###   ########.fr        #
+#    Updated: 2026/03/24 18:43:05 by maaugust         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME           = libftprintf.a
 
 # ============================== COMPILER FLAGS ============================== #
 CC             = cc
-CFLAGS         = -Wall -Wextra -Werror
+CFLAGS         = -Wall -Wextra -Werror -MMD -MP
 INCLUDES       = -Iincludes -Ilibft/includes
 AR             = ar rcs
 RM             = rm -rf
