@@ -6,7 +6,7 @@
 #    By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 21:11:29 by maaugust          #+#    #+#              #
-#    Updated: 2026/03/22 05:27:03 by maaugust         ###   ########.fr        #
+#    Updated: 2026/03/24 18:38:47 by maaugust         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,3 +77,7 @@ re: fclean all
 
 # ============================== PHONY TARGETS =============================== #
 .PHONY: all clean fclean re bonus
+
+# =============================== DEPENDENCIES =============================== #
+-include $(OBJ:.o=.d)
+-include $(B_OBJ:.o=.d)
