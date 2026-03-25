@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flags_utils.c                                   :+:      :+:    :+:   */
+/*   ft_flags_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 14:39:10 by maaugust          #+#    #+#             */
-/*   Updated: 2026/03/20 03:37:47 by maaugust         ###   ########.fr       */
+/*   Updated: 2026/03/25 01:59:03 by maaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 /**
  * @fn void reset_flags(t_flags *flags)
@@ -65,20 +65,4 @@ void	update_flags(const char *s, t_flags *flags)
 				flags->prec = flags->prec * 10 + (*s++ - '0');
 		}
 	}
-}
-
-/**
- * @fn bool is_specifier(char c)
- * @brief Checks if a character is a valid format specifier.
- * @details Compares the character against the standard printf specifiers 
- * supported by the project (c, s, p, d, i, u, x, X, %).
- * @param c The character to check.
- * @return  true if the character is a specifier, false otherwise.
- */
-bool	is_specifier(char c)
-{
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i'
-		|| c == 'u' || c == 'x' || c == 'X' || c == '%')
-		return (true);
-	return (false);
 }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 13:01:09 by maaugust          #+#    #+#             */
-/*   Updated: 2026/03/25 03:05:23 by maaugust         ###   ########.fr       */
+/*   Updated: 2026/03/25 01:47:46 by maaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 
 /* ========================================================================== */
 /* INCLUDES                                                                   */
@@ -22,6 +22,7 @@
 
 /* --------------------------- Internal Libraries --------------------------- */
 # include <stdarg.h>
+# include <stdbool.h>
 # include <stdlib.h>
 
 /* ========================================================================== */
@@ -53,6 +54,36 @@
 # define DEC_LEN	10
 
 /* ========================================================================== */
+/* DATA STRUCTURES                                                            */
+/* ========================================================================== */
+
+/**
+ * @struct s_flags
+ * @brief Structure to hold format specifier flags, width, and precision.
+ * @details This structure is initialized and populated during the format 
+ * string parsing phase. It is passed by reference to the specific conversion 
+ * functions, keeping function signatures clean and centrally managing the 
+ * state of all active bonus flags, alignment limits, and padding requirements.
+ * @var s_flags::minus The left-justify flag '-'.
+ * @var s_flags::plus  The force sign flag '+'.
+ * @var s_flags::space The space before positive numbers flag ' '.
+ * @var s_flags::hash  The alternate form flag '#'.
+ * @var s_flags::zero  The zero-padding flag '0'.
+ * @var s_flags::width The minimum field width limit.
+ * @var s_flags::prec  The precision limit.
+ */
+typedef struct s_flags
+{
+	bool	minus;
+	bool	plus;
+	bool	space;
+	bool	hash;
+	bool	zero;
+	int		width;
+	int		prec;
+}	t_flags;
+
+/* ========================================================================== */
 /* FUNCTIONS                                                                  */
 /* ========================================================================== */
 
@@ -60,14 +91,16 @@
 int		ft_printf(const char *s, ...);
 
 /* --------------------------- Printing Functions --------------------------- */
-int		ft_putchar_cnt(char c);
-int		ft_putstr_cnt(char *s);
-int		ft_putptr_cnt(void *s);
-int		ft_putnbr_cnt(int n);
-int		ft_putunbr_cnt(unsigned int n);
-int		ft_puthex_cnt(long nbr, char c);
+int		ft_putchar_cnt(char c, t_flags *flags);
+int		ft_putstr_cnt(char *s, t_flags *flags);
+int		ft_putptr_cnt(void *s, t_flags *flags);
+int		ft_putnbr_cnt(int n, t_flags *flags);
+int		ft_putunbr_cnt(unsigned int n, t_flags *flags);
+int		ft_puthex_cnt(long nbr, t_flags *flags, char c);
 
 /* --------------------------- Utility Functions ---------------------------- */
 char	*ft_utoa_base(unsigned long nbr, char *base, size_t base_len);
+void	reset_flags(t_flags *flags);
+void	update_flags(const char *s, t_flags *flags);
 
 #endif

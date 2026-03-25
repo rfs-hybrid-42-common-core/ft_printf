@@ -1,39 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr_cnt.c                                    :+:      :+:    :+:   */
+/*   ft_putptr_cnt_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:20:08 by maaugust          #+#    #+#             */
-/*   Updated: 2026/03/25 03:09:47 by maaugust         ###   ########.fr       */
+/*   Updated: 2026/03/25 03:12:09 by maaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 /**
- * @fn int ft_putptr_cnt(void *s)
+ * @fn int ft_putptr_cnt(void *s, t_flags *flags)
  * @brief Prints a memory address in hexadecimal format.
- * @details Prints the "0x" prefix followed by the address converted to 
- * a lowercase hexadecimal string. Handles the NULL pointer edge case.
- * @param s A void pointer representing the memory address.
- * @return  The total number of characters printed, or -1 on error.
+ * @details Prefixes the generated hexadecimal address with "0x". If the 
+ * pointer is NULL, it falls back to printing "(nil)".
+ * @param s     A void pointer representing the memory address.
+ * @param flags Pointer to the format flags structure.
+ * @return      The total number of characters printed, or -1 on error.
  */
-int	ft_putptr_cnt(void *s)
+int	ft_putptr_cnt(void *s, t_flags *flags)
 {
 	unsigned long	addr;
 	char			*str;
+	char			*tmp;
 	int				cnt;
 
 	if (!s)
-		return (ft_putstr_cnt("(nil)"));
+		return (ft_putstr_cnt("(nil)", flags));
 	addr = (unsigned long) s;
-	cnt = ft_putstr_cnt("0x");
-	str = ft_utoa_base(addr, HEX_LOWER, HEX_LEN);
+	tmp = ft_utoa_base(addr, HEX_LOWER, HEX_LEN);
+	if (!tmp)
+		return (-1);
+	str = ft_strjoin("0x", tmp);
+	free(tmp);
 	if (!str)
 		return (-1);
-	cnt += ft_putstr_cnt(str);
+	cnt = ft_putstr_cnt(str, flags);
 	free(str);
 	return (cnt);
 }
