@@ -146,7 +146,7 @@ cc main.c -I./includes -L. -lftprintf -o my_program
 ### 🧪 Testing
 The 42 subject highly encourages creating test programs to verify your work before peer evaluations. 
 
-**1. Using a Custom Tester**
+**1. Using a Custom Tester (`ft_printf_tester.c`)**
 If you are using the custom `ft_printf_tester.c` file, you must use preprocessor macros (`-D`) during compilation to tell the tester which suite of tests to run (`TEST_MANDATORY` and/or `TEST_BONUS`).
 
 To compile and run all tests against the library:
@@ -155,6 +155,16 @@ cc -Wall -Wextra -Werror -I./includes -I./libft/includes -D TEST_MANDATORY -D TE
 ./tester
 ```
 > **⚠️ WARNING for 42 Students:** Do not push `ft_printf_tester.c` or any executable files to your final Moulinette repository! They are strictly for local testing purposes. Submitting unauthorized files will result in a 0.
+
+#### 🛡️ Memory Leak Verification (Valgrind)
+Because this implementation utilizes dynamic memory allocation (`malloc`) in the `ft_utoa_base` helper function to handle base conversions (decimal, hex, pointer), it is critical to ensure that every allocated string is properly freed immediately after being printed to the standard output.
+
+Compile the custom tester with the strict 42 flags and run it through `valgrind` to verify absolute memory safety across all format specifiers and flags:
+```bash
+cc -Wall -Wextra -Werror -I./includes -I./libft/includes -D TEST_MANDATORY -D TEST_BONUS ft_printf_tester.c libftprintf.a -o tester
+valgrind --leak-check=full --show-leak-kinds=all ./tester
+```
+*Expected Valgrind Output: `All heap blocks were freed -- no leaks are possible`*
 
 **2. Third-Party Testers (Francinette)**
 Francinette is a widely used testing framework within the 42 community that runs strict tests (including memory leak checks and edge cases) against your library.
